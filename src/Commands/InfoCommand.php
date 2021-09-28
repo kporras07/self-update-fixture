@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class InfoCommand extends Command
 {
-    const VERSION = '1.2';
+    const VERSION = '2.0';
 
     /**
      * Creates InfoCommand instance.
