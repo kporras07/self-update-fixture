@@ -3,12 +3,36 @@
     "description": "Fixtures project to test consolidation/self-update",
     "type": "project",
     "require": {
-        "symfony/console": "^5"
+        "symfony/console": "^5",
+        "tm/tooly-composer-script": "^1.4"
     },
     "bin": ["bin/wonder"],
+    "scripts": {
+        "build": "@phar:build",
+        "phar:build": [
+          "rm -Rf ./wonder",
+          "vendor/bin/phar-composer.phar build .",
+          "mv self-update-fixture.phar wonder",
+          "chmod +x wonder"
+        ],
+        "post-install-cmd": [
+            "Tooly\\ScriptHandler::installPharTools"
+        ],
+        "post-update-cmd": [
+            "Tooly\\ScriptHandler::installPharTools"
+        ]
+    },
     "autoload": {
         "psr-4": {
             "Consolidation\\SelfUpdateFixture\\": "src/"
+        }
+    },
+    "extra": {
+        "tools": {
+            "phar-composer": {
+                "url": "https://clue.engineering/phar-composer-latest.phar",
+                "dev-only": true
+            }
         }
     },
     "license": "MIT",

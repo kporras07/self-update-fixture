@@ -1,0 +1,18 @@
+{
+    "alias": "wonder.phar",
+    "chmod": "0755",
+    "compactors": [],
+    "directories": ["bin", "src"],
+    "files": ["README.md","composer.lock","composer.json"],
+    "finder": [
+      {
+        "in": "vendor",
+        "name": "*.php"
+      }
+    ],
+    "git-commit": "git-commit",
+    "git-version": "git-version",
+    "output": "wonder.phar",
+    "main": "bin/wonder",
+    "stub": true
+}
