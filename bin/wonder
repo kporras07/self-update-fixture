@@ -7,13 +7,15 @@ require __DIR__ . '/../vendor/autoload.php';
 use Symfony\Component\Console\Application;
 use Consolidation\SelfUpdateFixture\Commands\InfoCommand;
 use SelfUpdate\SelfUpdateCommand;
+use SelfUpdate\SelfUpdateManager;
 
 $application = new Application();
 
 $application->add(new InfoCommand());
 
 if (\Phar::running(true)) {
-    $cmd = new SelfUpdateCommand('wonder', '1.2', 'kporras07/self-update-fixture');
+    $selfUpdateManager = new SelfUpdateManager('wonder', '1.2', 'kporras07/self-update-fixture');
+    $cmd = new SelfUpdateCommand($selfUpdateManager);
     $application->add($cmd);
 }
 
